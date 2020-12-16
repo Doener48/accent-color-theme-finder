@@ -31,8 +31,8 @@ function applyColor() {
   root.style.setProperty('--accent', `hsl(${colorPicker.value},${saturation}%,50%)`);
   root.style.setProperty('--bgdark', `hsl(${colorPicker.value},${saturation}%,${bgin}%)`);
   root.style.setProperty('--bglight', `hsl(${colorPicker.value},${saturation}%,${100 - bgin}%)`);
-  root.style.setProperty('--secondary1', `hsl(${colorPicker.value * 1 + 120},${saturation}%,50%)`);
-  root.style.setProperty('--secondary2', `hsl(${colorPicker.value * 1 - 120},${saturation}%,50%)`);
+  root.style.setProperty('--secondary1', `hsl(${(colorPicker.value * 1 + 120)%360},${saturation}%,50%)`);
+  root.style.setProperty('--secondary2', `hsl(${(colorPicker.value * 1 - 120)%360},${saturation}%,50%)`);
 }
 
 function save() {
@@ -40,9 +40,10 @@ function save() {
   --accent: hsl(${colorPicker.value},${saturation}%,50%);
   --bgdark: hsl(${colorPicker.value},${saturation}%,${bgin}%);
   --bglight: hsl(${colorPicker.value},${saturation}%,${100 - bgin}%);
-  --secondary1: hsl(${colorPicker.value * 1 + 120},${saturation}%,50%);
-  --secondary2: hsl(${colorPicker.value * 1 - 120},${saturation}%,50%);`
+  --secondary1: hsl(${(colorPicker.value * 1 + 120)%360},${saturation}%,50%);
+  --secondary2: hsl(${(colorPicker.value * 1 - 120)%360},${saturation}%,50%);`
   console.log(text);
+  alert('copied to clipboard: \n'+text);
   navigator.clipboard.writeText(text);
 }
 function play() {
